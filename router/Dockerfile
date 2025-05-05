@@ -10,3 +10,4 @@ RUN sudo apk add openrc
 RUN sudo usermod -a -G frrvty frr
 RUN sed -i 's/bgpd=no/bgpd=yes/g' etc/frr/daemons
 RUN rc-service frr restart
+RUN bin/sh
