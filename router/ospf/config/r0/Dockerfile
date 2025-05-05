@@ -2,6 +2,7 @@ FROM quay.io/frrouting/frr@sha256:c26f183a7ac0ece17565bc147d2e7126d6f24a55b178c6
 
 WORKDIR /
 COPY network-setup.sh network-setup.sh
+RUN chmod +x ./network-setup.sh
 
 RUN apk update && apk add sudo
 RUN sudo apk add nano
