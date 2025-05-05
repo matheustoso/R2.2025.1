@@ -1,0 +1,46 @@
+services:
+  router-a:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    image: router-a
+    build:
+      context: router
+    networks:
+      - network-a
+
+  router-b:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    image: router-a
+    build:
+      context: router
+    networks:
+      - network-a
+
+  router-c:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    image: router-a
+    build:
+      context: router
+    networks:
+      - network-a
+
+networks:
+  network-a:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.1.0/24
