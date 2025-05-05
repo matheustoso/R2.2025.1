@@ -1,0 +1,119 @@
+services:
+  r0:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    build:
+      context: config/r0
+    networks:
+      n0:
+        ipv4_address: 172.21.0.10
+      n2:
+        ipv4_address: 172.21.2.10
+
+  r1:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    build:
+      context: config/r1
+    networks:
+      n0:
+        ipv4_address: 172.21.0.11
+      n1:
+        ipv4_address: 172.21.1.11
+      n3:
+        ipv4_address: 172.21.3.11
+
+  r2:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    build:
+      context: config/r2
+    networks:
+      n1:
+        ipv4_address: 172.21.1.12
+
+  r3:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    build:
+      context: config/r3
+    networks:
+      n4:
+        ipv4_address: 172.21.4.13
+
+  r4:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    build:
+      context: config/r4
+    networks:
+      n2: 
+        ipv4_address: 172.21.2.14
+      n3: 
+        ipv4_address: 172.21.3.14
+
+  r5:
+    cap_add: 
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+    build:
+      context: config/r5
+    networks:
+      n2:
+        ipv4_address: 172.21.2.15
+      n4:
+        ipv4_address: 172.21.4.15
+
+networks:
+  n0:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/24
+
+  n1:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.1.0/24
+
+  n2:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.2.0/24
+
+  n3:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.3.0/24
+
+  n4:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.4.0/24

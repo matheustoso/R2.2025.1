@@ -1,0 +1,2 @@
+#!/bin/sh
+vtysh -c 'conf t' -c 'int lo' -c 'ip address 10.10.10.15/32' -c 'end' -c 'conf t' -c 'router ospf' -c 'network 10.10.10.15/32 area 0' -c 'network 172.21.2.15/24 area 0' -c 'network 172.21.4.15/24 area 0' -c 'end'
