@@ -1,5 +1,5 @@
 
-EIGRP Topology Table for AS(100)/ID(172.21.1.14)
+EIGRP Topology Table for AS(1)/ID(172.21.1.14)
 
 Codes: P - Passive, A - Active, U - Update, Q - Query, R - Reply
        r - reply Status, s - sia Status

@@ -1,8 +1,8 @@
 
-EIGRP neighbors for AS(100)
+EIGRP neighbors for AS(1)
 
 H   Address           Interface            Hold   Uptime   SRTT   RTO   Q     Seq  
                                            (sec)           (ms)        Cnt    Num   
-0   172.21.2.10       eth0                 14     0        0      2    0      3
-0   172.21.4.13       eth1                 14     0        0      2    0      3
-0   172.21.4.12       eth1                 14     0        0      2    0      3
+0   172.21.2.10       eth0                 10     0        0      2    0      3
+0   172.21.4.12       eth1                 10     0        0      2    0      3
+0   172.21.4.13       eth1                 -      0        0      2    0      5

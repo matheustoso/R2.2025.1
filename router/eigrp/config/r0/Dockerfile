@@ -11,3 +11,4 @@ RUN sudo apk add shadow
 RUN sudo apk add openrc
 RUN sudo usermod -a -G frrvty frr
 RUN sed -i 's/eigrpd=no/eigrpd=yes/g' etc/frr/daemons
+RUN touch ./etc/frr/vtysh.conf
