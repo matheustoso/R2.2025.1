@@ -1,5 +1,5 @@
 eth0 is up
-  ifindex 1710, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
+  ifindex 2044, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
   Internet Address 172.21.1.15/24, Broadcast 172.21.1.255, Area 0.0.0.0
   MTU mismatch detection: enabled
   Router ID 172.21.3.15, Network Type BROADCAST, Cost: 10
@@ -8,12 +8,12 @@ eth0 is up
   Backup Designated Router (ID) 172.21.1.14, Interface Address 172.21.1.14
   Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
   Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
-    Hello due in 9.279s
+    Hello due in 3.605s
   Neighbor Count is 1, Adjacent neighbor count is 1
   Graceful Restart hello delay: 10s
   LSA retransmissions: 1
 eth1 is up
-  ifindex 1722, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
+  ifindex 2054, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
   Internet Address 172.21.3.15/24, Broadcast 172.21.3.255, Area 0.0.0.0
   MTU mismatch detection: enabled
   Router ID 172.21.3.15, Network Type BROADCAST, Cost: 10
@@ -22,7 +22,7 @@ eth1 is up
   Backup Designated Router (ID) 172.21.3.15, Interface Address 172.21.3.15
   Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
   Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
-    Hello due in 9.279s
+    Hello due in 3.605s
   Neighbor Count is 1, Adjacent neighbor count is 1
   Graceful Restart hello delay: 10s
   LSA retransmissions: 0

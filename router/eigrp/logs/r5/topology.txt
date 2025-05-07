@@ -9,8 +9,8 @@ P  172.21.0.0/24, 1 successors, FD is 30720, serno: 0
 P  172.21.1.0/24, 1 successors, FD is 28160, serno: 0 
        via Connected, eth0
 P  172.21.2.0/24, 2 successors, FD is 33280, serno: 0 
-       via 172.21.3.13 (33280/30720), eth1
        via 172.21.1.14 (33280/30720), eth0
+       via 172.21.3.13 (33280/30720), eth1
 P  172.21.3.0/24, 1 successors, FD is 28160, serno: 0 
        via Connected, eth1
 P  172.21.4.0/24, 1 successors, FD is 30720, serno: 0 

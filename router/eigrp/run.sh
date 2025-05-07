@@ -27,18 +27,13 @@ r5=0
 SECONDS=0
 
 while [ "$r0" -lt 5 ] || [ "$r1" -lt 5 ] || [ "$r2" -lt 5 ] || [ "$r3" -lt 5 ] || [ "$r4" -lt 5 ] || [ "$r5" -lt 5 ]; do
+    sleep 0.5
     r0=$(docker compose exec r0 sh -c "vtysh -c 'show ip route' | grep '^E' | wc -l")
     r1=$(docker compose exec r1 sh -c "vtysh -c 'show ip route' | grep '^E' | wc -l")
     r2=$(docker compose exec r2 sh -c "vtysh -c 'show ip route' | grep '^E' | wc -l")
     r3=$(docker compose exec r3 sh -c "vtysh -c 'show ip route' | grep '^E' | wc -l")
     r4=$(docker compose exec r4 sh -c "vtysh -c 'show ip route' | grep '^E' | wc -l")
     r5=$(docker compose exec r5 sh -c "vtysh -c 'show ip route' | grep '^E' | wc -l")
-    echo $r0
-    echo $r1
-    echo $r2
-    echo $r3
-    echo $r4
-    echo $r5
 done
 
 echo $SECONDS > logs/convergence-time.txt
