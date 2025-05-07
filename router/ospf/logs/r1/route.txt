@@ -1,0 +1,17 @@
+============ OSPF network routing table ============
+N    172.21.0.0/24         [20] area: 0.0.0.0
+                           via 172.21.2.10, eth0
+N    172.21.1.0/24         [30] area: 0.0.0.0
+                           via 172.21.2.10, eth0
+N    172.21.2.0/24         [10] area: 0.0.0.0
+                           directly attached to eth0
+N    172.21.3.0/24         [20] area: 0.0.0.0
+                           via 172.21.4.13, eth1
+N    172.21.4.0/24         [10] area: 0.0.0.0
+                           directly attached to eth1
+
+============ OSPF router routing table =============
+
+============ OSPF external routing table ===========
+
+

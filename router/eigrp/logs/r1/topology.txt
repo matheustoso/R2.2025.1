@@ -1,0 +1,17 @@
+
+EIGRP Topology Table for AS(100)/ID(172.21.4.11)
+
+Codes: P - Passive, A - Active, U - Update, Q - Query, R - Reply
+       r - reply Status, s - sia Status
+
+P  172.21.0.0/24, 1 successors, FD is 30720, serno: 0 
+       via 172.21.2.10 (30720/28160), eth0
+P  172.21.1.0/24, 2 successors, FD is 33280, serno: 0 
+       via 172.21.4.13 (33280/30720), eth1
+       via 172.21.2.10 (33280/30720), eth0
+P  172.21.2.0/24, 1 successors, FD is 28160, serno: 0 
+       via Connected, eth0
+P  172.21.3.0/24, 1 successors, FD is 30720, serno: 0 
+       via 172.21.4.13 (30720/28160), eth1
+P  172.21.4.0/24, 1 successors, FD is 28160, serno: 0 
+       via Connected, eth1

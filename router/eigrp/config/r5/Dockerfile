@@ -10,4 +10,4 @@ RUN sudo apk add sed
 RUN sudo apk add shadow
 RUN sudo apk add openrc
 RUN sudo usermod -a -G frrvty frr
-RUN sed -i 's/ospfd=no/ospfd=yes/g' etc/frr/daemons
+RUN sed -i 's/eigrpd=no/eigrpd=yes/g' etc/frr/daemons

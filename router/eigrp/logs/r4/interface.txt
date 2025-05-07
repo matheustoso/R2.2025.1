@@ -1,0 +1,7 @@
+
+EIGRP interfaces for AS(100)
+
+Interface        Bandwidth  Delay      Peers  Xmit Queue   Mean    Pacing Time    Multicast    Pending  Hello    Holdtime
+                                              Un/Reliable  SRTT    Un/Reliable    Flow Timer   Routes  
+eth0             100000     10         1      0 / 0         0       0              0            0       5        15       
+eth1             100000     10         1      0 / 0         0       0              0            0       5        15       
