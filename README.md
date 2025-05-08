@@ -222,7 +222,9 @@ E>* 172.21.4.0/24 [90/30720] via 172.21.2.11, eth1, weight 1, 00:00:04
 
 </td>
 </tr>
+</table>
 
+<table>
 <tr>
 <td>
 show ip ospf/eigrp route/topology
@@ -272,7 +274,9 @@ P  172.21.4.0/24, 1 successors, FD is 30720, serno: 0
 
 </td>
 </tr>
+</table>
 
+<table>
 <tr>
 <td>
 show ip ospf/eigrp neighbor
@@ -299,7 +303,9 @@ H   Address           Interface            Hold   Uptime   SRTT   RTO   Q     Se
 
 </td>
 </tr>
+</table>
 
+<table>
 <tr>
 <td>
 show ip ospf/eigrp interface
