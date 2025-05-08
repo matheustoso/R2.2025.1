@@ -78,4 +78,14 @@ docker compose exec r3 vtysh -c 'show ip ospf neighbor' > logs/r3/neighbor.txt
 docker compose exec r4 vtysh -c 'show ip ospf neighbor' > logs/r4/neighbor.txt
 docker compose exec r5 vtysh -c 'show ip ospf neighbor' > logs/r5/neighbor.txt
 echo "Vizinhos OSPF logados em logs/rN/neighbor.txt"
+
+#Finalização
+read -p "Terminar containers? [s/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Ss]$ ]]
+then
+    bash ./dispose.sh
+    exit 1
+fi
+
 echo "Execute o script dispose.sh para terminar os containers"

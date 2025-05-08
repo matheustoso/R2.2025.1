@@ -6,8 +6,7 @@ docker compose exec -d -T --privileged r1 ./network-setup.sh
 docker compose exec -d -T --privileged r2 ./network-setup.sh
 docker compose exec -d -T --privileged r3 ./network-setup.sh
 docker compose exec -d -T --privileged r4 ./network-setup.sh
-docker compose exec -d -T --privileged r5 ./network-setup.sh &
-wait
+docker compose exec -d -T --privileged r5 ./network-setup.sh
 
 #Espera convergência da rede, coleta tempo e tabelas de roteamento
 mkdir -p ./logs/r0
@@ -79,4 +78,15 @@ docker compose exec r3 vtysh -c 'show ip eigrp neighbor' > logs/r3/neighbor.txt
 docker compose exec r4 vtysh -c 'show ip eigrp neighbor' > logs/r4/neighbor.txt
 docker compose exec r5 vtysh -c 'show ip eigrp neighbor' > logs/r5/neighbor.txt
 echo "Vizinhos EIGRP logados em logs/rN/neighbor.txt"
+echo "Execute o script dispose.sh para terminar os containers"
+
+#Finalização
+read -p "Terminar containers? [s/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Ss]$ ]]
+then
+    bash ./dispose.sh
+    exit 1
+fi
+
 echo "Execute o script dispose.sh para terminar os containers"

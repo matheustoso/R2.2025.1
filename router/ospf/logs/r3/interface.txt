@@ -1,5 +1,19 @@
 eth0 is up
-  ifindex 11, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
+  ifindex 2940, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
+  Internet Address 172.21.3.13/24, Broadcast 172.21.3.255, Area 0.0.0.0
+  MTU mismatch detection: enabled
+  Router ID 172.21.4.13, Network Type BROADCAST, Cost: 10
+  Transmit Delay is 1 sec, State DR, Priority 1
+  Designated Router (ID) 172.21.4.13 Interface Address 172.21.3.13/24
+  Backup Designated Router (ID) 172.21.3.15, Interface Address 172.21.3.15
+  Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
+  Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
+    Hello due in 3.533s
+  Neighbor Count is 1, Adjacent neighbor count is 1
+  Graceful Restart hello delay: 10s
+  LSA retransmissions: 2
+eth1 is up
+  ifindex 2950, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
   Internet Address 172.21.4.13/24, Broadcast 172.21.4.255, Area 0.0.0.0
   MTU mismatch detection: enabled
   Router ID 172.21.4.13, Network Type BROADCAST, Cost: 10
@@ -9,22 +23,8 @@ eth0 is up
   Saved Network-LSA sequence number 0x80000002
   Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
   Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
-    Hello due in 6.784s
+    Hello due in 3.533s
   Neighbor Count is 2, Adjacent neighbor count is 2
   Graceful Restart hello delay: 10s
-  LSA retransmissions: 4
-eth1 is up
-  ifindex 12, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
-  Internet Address 172.21.3.13/24, Broadcast 172.21.3.255, Area 0.0.0.0
-  MTU mismatch detection: enabled
-  Router ID 172.21.4.13, Network Type BROADCAST, Cost: 10
-  Transmit Delay is 1 sec, State DR, Priority 1
-  Designated Router (ID) 172.21.4.13 Interface Address 172.21.3.13/24
-  Backup Designated Router (ID) 172.21.3.15, Interface Address 172.21.3.15
-  Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
-  Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
-    Hello due in 6.784s
-  Neighbor Count is 1, Adjacent neighbor count is 1
-  Graceful Restart hello delay: 10s
-  LSA retransmissions: 2
+  LSA retransmissions: 5
 
