@@ -144,7 +144,7 @@ Esse é o script principal do projeto, existindo um para cada protocolo. Dentro 
 - Aplicação dos scripts network-setup.sh em cada roteador
 - Cálculo da convergência
 - Coleta de várias informações interessantes, como a tabela de roteamento IP, tabela do protocolo, topologia, interfaces, vizinhos, etc.
-- Execução dos testes (aplicando as alterações necessárias para cada um) e coleta dos dados de desempenho
+- Execução dos testes e coleta dos dados de desempenho
 - Finalização do processo, com prompt para terminar os containers ou deixar eles de pé
 
 Dentro dos scripts run há comentários explicando mais a fundo os passos realizados em cada protocolo.

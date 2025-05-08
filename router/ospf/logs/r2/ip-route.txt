@@ -6,11 +6,11 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        t - trapped, o - offload failure
 
 IPv4 unicast VRF default:
-K>* 0.0.0.0/0 [0/0] via 172.21.4.1, eth0, weight 1, 00:00:55
-O>* 172.21.0.0/24 [110/30] via 172.21.4.11, eth0, weight 1, 00:00:08
-O>* 172.21.1.0/24 [110/30] via 172.21.4.13, eth0, weight 1, 00:00:03
-O>* 172.21.2.0/24 [110/20] via 172.21.4.11, eth0, weight 1, 00:00:08
-O>* 172.21.3.0/24 [110/20] via 172.21.4.13, eth0, weight 1, 00:00:08
-O   172.21.4.0/24 [110/10] is directly connected, eth0, weight 1, 00:00:54
-C>* 172.21.4.0/24 is directly connected, eth0, weight 1, 00:00:56
-L>* 172.21.4.12/32 is directly connected, eth0, weight 1, 00:00:56
+K>* 0.0.0.0/0 [0/0] via 172.21.4.1, eth0, weight 1, 00:00:57
+O>* 172.21.0.0/24 [110/30] via 172.21.4.11, eth0, weight 1, 00:00:09
+O>* 172.21.1.0/24 [110/30] via 172.21.4.13, eth0, weight 1, 00:00:04
+O>* 172.21.2.0/24 [110/20] via 172.21.4.11, eth0, weight 1, 00:00:09
+O>* 172.21.3.0/24 [110/20] via 172.21.4.13, eth0, weight 1, 00:00:09
+O   172.21.4.0/24 [110/10] is directly connected, eth0, weight 1, 00:00:09
+C>* 172.21.4.0/24 is directly connected, eth0, weight 1, 00:00:57
+L>* 172.21.4.12/32 is directly connected, eth0, weight 1, 00:00:57

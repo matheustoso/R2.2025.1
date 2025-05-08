@@ -6,14 +6,14 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        t - trapped, o - offload failure
 
 IPv4 unicast VRF default:
-K>* 0.0.0.0/0 [0/0] via 172.21.2.1, eth0, weight 1, 00:00:54
-O>* 172.21.0.0/24 [110/20] via 172.21.2.10, eth0, weight 1, 00:00:08
-O>* 172.21.1.0/24 [110/30] via 172.21.2.10, eth0, weight 1, 00:00:02
-  *                        via 172.21.4.13, eth1, weight 1, 00:00:02
-O   172.21.2.0/24 [110/10] is directly connected, eth0, weight 1, 00:00:53
-C>* 172.21.2.0/24 is directly connected, eth0, weight 1, 00:00:54
-L>* 172.21.2.11/32 is directly connected, eth0, weight 1, 00:00:54
-O>* 172.21.3.0/24 [110/20] via 172.21.4.13, eth1, weight 1, 00:00:07
-O   172.21.4.0/24 [110/10] is directly connected, eth1, weight 1, 00:00:07
-C>* 172.21.4.0/24 is directly connected, eth1, weight 1, 00:00:54
-L>* 172.21.4.11/32 is directly connected, eth1, weight 1, 00:00:54
+K>* 0.0.0.0/0 [0/0] via 172.21.2.1, eth0, weight 1, 00:00:56
+O>* 172.21.0.0/24 [110/20] via 172.21.2.10, eth0, weight 1, 00:00:10
+O>* 172.21.1.0/24 [110/30] via 172.21.2.10, eth0, weight 1, 00:00:04
+  *                        via 172.21.4.13, eth1, weight 1, 00:00:04
+O   172.21.2.0/24 [110/10] is directly connected, eth0, weight 1, 00:00:55
+C>* 172.21.2.0/24 is directly connected, eth0, weight 1, 00:00:56
+L>* 172.21.2.11/32 is directly connected, eth0, weight 1, 00:00:56
+O>* 172.21.3.0/24 [110/20] via 172.21.4.13, eth1, weight 1, 00:00:09
+O   172.21.4.0/24 [110/10] is directly connected, eth1, weight 1, 00:00:14
+C>* 172.21.4.0/24 is directly connected, eth1, weight 1, 00:00:56
+L>* 172.21.4.11/32 is directly connected, eth1, weight 1, 00:00:56

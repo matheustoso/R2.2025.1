@@ -6,6 +6,7 @@ RUN chmod +x ./network-setup.sh
 
 RUN apk update && apk add sudo
 RUN sudo apk add nano
+RUN sudo apk add tcpdump
 RUN sudo apk add sed
 RUN sudo apk add shadow
 RUN sudo apk add openrc
