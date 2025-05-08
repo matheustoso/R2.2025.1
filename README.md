@@ -151,9 +151,13 @@ Esse é o script principal do projeto, existindo um para cada protocolo. Dentro 
 
 Dentro dos scripts run há comentários explicando mais a fundo os passos realizados em cada protocolo.
 
-## Análise
+# Análise
 
-### Tabelas de roteamento
+## Tabelas de roteamento
+
+Aqui temos os resultados de alguns comandos no roteador, conforme especificado na tabela. Esses resultados são coletados com a execução do script principal, e salvos nas pastas de logs dos respectivos roteadores.
+
+Primeiramente, temos as tabelas de roteamento IP no roteador r0, que são virtualmente idênticas além do código de protocolo.
 
 <table>
 <tr>
@@ -224,6 +228,8 @@ E>* 172.21.4.0/24 [90/30720] via 172.21.2.11, eth1, weight 1, 00:00:04
 </tr>
 </table>
 
+Abaixo temos a tabela de roteamento do OSPF e a tabela de topologia do EIGRP no r0, que possuem o mesmo número de rotas.
+
 <table>
 <tr>
 <td>
@@ -276,6 +282,8 @@ P  172.21.4.0/24, 1 successors, FD is 30720, serno: 0
 </tr>
 </table>
 
+Abaixo temos os vizinhos do r0 de acordo com cada protocolo.
+
 <table>
 <tr>
 <td>
@@ -304,6 +312,8 @@ H   Address           Interface            Hold   Uptime   SRTT   RTO   Q     Se
 </td>
 </tr>
 </table>
+
+E por último temos as informações de interface de cada protocolo no r0.
 
 <table>
 <tr>
@@ -360,21 +370,48 @@ eth1             100000     10         1      0 / 0         0       0           
 </table>
 
 ### Convergência
-
 OSPF | EIGRP
 :-:|:-:
 ![Convergência OSPF](./analysis/ospf/convergence-time.png "Convergência OSPF") | ![Convergência EIGRP](./analysis/eigrp/convergence-time.png "Convergência EIGRP")
 
-### Latência e Delay
+O tempo de convergência da rede foi obtido a partir de um script que consulta as tabelas de roteamento de cada roteador da rede a cada segundo imediatamente após a configuração dos roteadores com o devido protocol, e registra o tempo total até todos os roteadores terem todas as redes da topologia nas suas tabelas de roteamento.
 
+Podemos ver que o EIGRP, sendo um protocolo de vetor de distância, possui tempo de convergência muito menor.
+
+Os resultados acima são da última execução realizada, mas ao longo de todas as execuções a convergência variou nos seguintes intervalos:
+
+- OSPF: 45-53s
+- EIGRP: 1-6s 
+
+### Latência e Delay
 OSPF n1 | EIGRP n1 | OSPF n3 | EIGRP n3
 :-:|:-:|:-:|:-:
 ![Ping OSPF](./analysis/ospf/ping50-r0-n1-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping50-r0-n1-r5.png "Ping EIGRP") | ![Ping OSPF](./analysis/ospf/ping50-r0-n3-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping50-r0-n3-r5.png "Ping EIGRP")
 ![Ping OSPF](./analysis/ospf/ping500-r0-n1-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping500-r0-n1-r5.png "Ping EIGRP") | ![Ping OSPF](./analysis/ospf/ping500-r0-n3-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping500-r0-n3-r5.png "Ping EIGRP")
 ![Ping OSPF](./analysis/ospf/ping5000-r0-n1-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping5000-r0-n1-r5.png "Ping EIGRP") | ![Ping OSPF](./analysis/ospf/ping5000-r0-n3-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping5000-r0-n3-r5.png "Ping EIGRP")
 
-### Pacotes de roteamento
+Acima temos alguns testes de latência realizados entre o roteador r0 e r5.
 
+Na primeira linha da tabela temos testes de 50 pings com packet size de 50, na segunda linha o packet size aumenta para 500, e na terceira para 5000.
+
+Cada coluna representa um protocolo, e as primeiras duas colunas são entre o r0 e a interface da rede n1 do r5, enquanto a terceira e quarta colunas são entre o r0 e a interface de rede n3 do r5.
+
+Vemos que entre OSPF e EIGRP, o EIGRP possui menor latência, e menos picos.
+
+Nos pings n1 temos 2 saltos, enquanto nos pings n3 temos 3 saltos, assim podemos ter uma noção do delay adicional causado por um roteador a mais na rota. O delay introduzido em ambos os protocolos é muito próximo em termos absolutos, e marginalmente menor para o OSPF em termos percentuais.
+
+- 25.3% - EIGRP 50
+- 23.9% - OSPF 50
+- 29.6% - EIGRP 500
+- 28.4% - OSPF 500
+- 23.3% - EIGRP 5000
+- 24.1% - OSPF 5000
+
+### Pacotes de roteamento
 OSPF | EIGRP 
 :-:|:-:
 ![Pacotes de roteamento OSPF em 60s](./analysis/ospf/tcpdump.png "Pacotes de roteamento OSPF em 60s") | ![Pacotes de roteamento EIGRP em 60s](./analysis/eigrp/tcpdump.png "Pacotes de roteamento EIGRP em 60s")
+
+Os dados acimas foram coletados com tcpdump em cada roteador, executado por 60s simultaneamente em todos os roteadores da rede. O tcpdump foi configurado para coletar somente pacotes do protocolo sob análise.
+
+Vemos que o OSPF gerou aproximadamente metade da quantidade de pacotes de roteamento que o EIGRP gerou no mesmo intervalo de tempo.
