@@ -1,0 +1,25 @@
+03:33:53.823513 eth1  M   IP ospf_r3_1.ospf_n3 > 224.0.0.5: OSPFv2, Hello, length 48
+03:33:54.092171 eth0  M   IP ospf_r4_1.ospf_n1 > 224.0.0.5: OSPFv2, Hello, length 48
+03:33:54.344340 eth0  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:33:54.344423 eth1  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:03.823547 eth1  M   IP ospf_r3_1.ospf_n3 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:04.092536 eth0  M   IP ospf_r4_1.ospf_n1 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:04.344353 eth0  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:04.344442 eth1  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:13.823581 eth1  M   IP ospf_r3_1.ospf_n3 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:14.092541 eth0  M   IP ospf_r4_1.ospf_n1 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:14.344367 eth0  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:14.344452 eth1  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:23.823597 eth1  M   IP ospf_r3_1.ospf_n3 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:24.093316 eth0  M   IP ospf_r4_1.ospf_n1 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:24.344374 eth0  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:24.344457 eth1  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:33.823620 eth1  M   IP ospf_r3_1.ospf_n3 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:34.093565 eth0  M   IP ospf_r4_1.ospf_n1 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:34.344386 eth0  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:34.344460 eth1  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:43.823625 eth1  M   IP ospf_r3_1.ospf_n3 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:44.093572 eth0  M   IP ospf_r4_1.ospf_n1 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:44.344427 eth0  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+03:34:44.344512 eth1  Out IP 4750d18336d8 > 224.0.0.5: OSPFv2, Hello, length 48
+

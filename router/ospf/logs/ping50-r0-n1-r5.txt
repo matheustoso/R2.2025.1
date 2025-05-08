@@ -1,0 +1,55 @@
+PING 172.21.1.15 (172.21.1.15): 50 data bytes
+58 bytes from 172.21.1.15: seq=0 ttl=63 time=0.297 ms
+58 bytes from 172.21.1.15: seq=1 ttl=63 time=0.107 ms
+58 bytes from 172.21.1.15: seq=2 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=3 ttl=63 time=0.095 ms
+58 bytes from 172.21.1.15: seq=4 ttl=63 time=0.087 ms
+58 bytes from 172.21.1.15: seq=5 ttl=63 time=0.094 ms
+58 bytes from 172.21.1.15: seq=6 ttl=63 time=0.096 ms
+58 bytes from 172.21.1.15: seq=7 ttl=63 time=0.096 ms
+58 bytes from 172.21.1.15: seq=8 ttl=63 time=0.154 ms
+58 bytes from 172.21.1.15: seq=9 ttl=63 time=0.091 ms
+58 bytes from 172.21.1.15: seq=10 ttl=63 time=0.087 ms
+58 bytes from 172.21.1.15: seq=11 ttl=63 time=0.075 ms
+58 bytes from 172.21.1.15: seq=12 ttl=63 time=0.082 ms
+58 bytes from 172.21.1.15: seq=13 ttl=63 time=0.085 ms
+58 bytes from 172.21.1.15: seq=14 ttl=63 time=0.090 ms
+58 bytes from 172.21.1.15: seq=15 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=16 ttl=63 time=0.102 ms
+58 bytes from 172.21.1.15: seq=17 ttl=63 time=0.093 ms
+58 bytes from 172.21.1.15: seq=18 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=19 ttl=63 time=0.099 ms
+58 bytes from 172.21.1.15: seq=20 ttl=63 time=0.098 ms
+58 bytes from 172.21.1.15: seq=21 ttl=63 time=0.071 ms
+58 bytes from 172.21.1.15: seq=22 ttl=63 time=0.082 ms
+58 bytes from 172.21.1.15: seq=23 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=24 ttl=63 time=0.090 ms
+58 bytes from 172.21.1.15: seq=25 ttl=63 time=0.091 ms
+58 bytes from 172.21.1.15: seq=26 ttl=63 time=0.094 ms
+58 bytes from 172.21.1.15: seq=27 ttl=63 time=0.094 ms
+58 bytes from 172.21.1.15: seq=28 ttl=63 time=0.096 ms
+58 bytes from 172.21.1.15: seq=29 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=30 ttl=63 time=0.100 ms
+58 bytes from 172.21.1.15: seq=31 ttl=63 time=0.072 ms
+58 bytes from 172.21.1.15: seq=32 ttl=63 time=0.086 ms
+58 bytes from 172.21.1.15: seq=33 ttl=63 time=0.086 ms
+58 bytes from 172.21.1.15: seq=34 ttl=63 time=0.105 ms
+58 bytes from 172.21.1.15: seq=35 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=36 ttl=63 time=0.090 ms
+58 bytes from 172.21.1.15: seq=37 ttl=63 time=0.092 ms
+58 bytes from 172.21.1.15: seq=38 ttl=63 time=0.096 ms
+58 bytes from 172.21.1.15: seq=39 ttl=63 time=0.098 ms
+58 bytes from 172.21.1.15: seq=40 ttl=63 time=0.087 ms
+58 bytes from 172.21.1.15: seq=41 ttl=63 time=0.075 ms
+58 bytes from 172.21.1.15: seq=42 ttl=63 time=0.095 ms
+58 bytes from 172.21.1.15: seq=43 ttl=63 time=0.082 ms
+58 bytes from 172.21.1.15: seq=44 ttl=63 time=0.095 ms
+58 bytes from 172.21.1.15: seq=45 ttl=63 time=0.093 ms
+58 bytes from 172.21.1.15: seq=46 ttl=63 time=0.094 ms
+58 bytes from 172.21.1.15: seq=47 ttl=63 time=0.103 ms
+58 bytes from 172.21.1.15: seq=48 ttl=63 time=0.095 ms
+58 bytes from 172.21.1.15: seq=49 ttl=63 time=0.096 ms
+
+--- 172.21.1.15 ping statistics ---
+50 packets transmitted, 50 packets received, 0% packet loss
+round-trip min/avg/max = 0.071/0.096/0.297 ms
