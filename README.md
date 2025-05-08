@@ -13,6 +13,8 @@ O projeto foi testado nas seguintes plataformas:
 
 Basta clonar o repositório, abrir a pasta do protocolo desejado no terminal, e executar o script run.sh. (Executar o script em escopo diferente da pasta do protocolo vai causar erro)
 
+É necessário que todos os scripts tenham EOL padrão UNIX (LF), caso a codificação mude para CRLF no seu ambiente, é necessário recodificar todos os scripts com LF.
+
 Nota: Devido ao volume de configurações e testes realizados no script de execução, os daemons que simulam os protocolos podem se perder, principalmente no protocolo EIGRP que tem implementação menos robusta que o OSPF no [FRR](https://frrouting.org/). Caso ocorra, o script ficará preso no passo de convergência das tabelas de roteamento (mais do que alguns segundos no EIGRP, ou alguns minutos no OSPF). Basta cancelar a execução e rodar novamente até funcionar.
 
 ## Estrutura do projeto
@@ -148,3 +150,225 @@ Esse é o script principal do projeto, existindo um para cada protocolo. Dentro 
 - Finalização do processo, com prompt para terminar os containers ou deixar eles de pé
 
 Dentro dos scripts run há comentários explicando mais a fundo os passos realizados em cada protocolo.
+
+## Análise
+
+### Tabelas de roteamento
+
+<table>
+<tr>
+<td>
+</td>
+<td>
+OSPF
+</td>
+<td>
+EIGRP
+</td>
+</tr>
+
+<tr>
+<td>
+show ip route
+</td>
+<td>
+
+```
+Codes: K - kernel route, C - connected, L - local, S - static,
+       R - RIP, O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+       T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric, t - Table-Direct,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+IPv4 unicast VRF default:
+K>* 0.0.0.0/0 [0/0] via 172.21.0.1, eth0, weight 1, 00:00:54
+O   172.21.0.0/24 [110/10] is directly connected, eth0, weight 1, 00:00:53
+C>* 172.21.0.0/24 is directly connected, eth0, weight 1, 00:00:54
+L>* 172.21.0.10/32 is directly connected, eth0, weight 1, 00:00:54
+O>* 172.21.1.0/24 [110/20] via 172.21.0.14, eth0, weight 1, 00:00:07
+O   172.21.2.0/24 [110/10] is directly connected, eth1, weight 1, 00:00:53
+C>* 172.21.2.0/24 is directly connected, eth1, weight 1, 00:00:54
+L>* 172.21.2.10/32 is directly connected, eth1, weight 1, 00:00:54
+O>* 172.21.3.0/24 [110/30] via 172.21.0.14, eth0, weight 1, 00:00:02
+  *                        via 172.21.2.11, eth1, weight 1, 00:00:02
+O>* 172.21.4.0/24 [110/20] via 172.21.2.11, eth1, weight 1, 00:00:07
+```
+
+</td>
+<td>
+
+```
+Codes: K - kernel route, C - connected, L - local, S - static,
+       R - RIP, O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+       T - Table, v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+       f - OpenFabric, t - Table-Direct,
+       > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+       t - trapped, o - offload failure
+
+IPv4 unicast VRF default:
+K>* 0.0.0.0/0 [0/0] via 172.21.0.1, eth0, weight 1, 00:00:05
+E   172.21.0.0/24 [90/28160] is directly connected, eth0, weight 1, 00:00:04
+C>* 172.21.0.0/24 is directly connected, eth0, weight 1, 00:00:05
+L>* 172.21.0.10/32 is directly connected, eth0, weight 1, 00:00:05
+E>* 172.21.1.0/24 [90/30720] via 172.21.0.14, eth0, weight 1, 00:00:03
+E   172.21.2.0/24 [90/28160] is directly connected, eth1, weight 1, 00:00:04
+C>* 172.21.2.0/24 is directly connected, eth1, weight 1, 00:00:05
+L>* 172.21.2.10/32 is directly connected, eth1, weight 1, 00:00:05
+E>* 172.21.3.0/24 [90/33280] via 172.21.0.14, eth0, weight 1, 00:00:02
+  *                          via 172.21.2.11, eth1, weight 1, 00:00:02
+E>* 172.21.4.0/24 [90/30720] via 172.21.2.11, eth1, weight 1, 00:00:04
+```
+
+</td>
+</tr>
+
+<tr>
+<td>
+show ip ospf/eigrp route/topology
+</td>
+<td>
+
+```
+============ OSPF network routing table ============
+N    172.21.0.0/24         [10] area: 0.0.0.0
+                           directly attached to eth0
+N    172.21.1.0/24         [20] area: 0.0.0.0
+                           via 172.21.0.14, eth0
+N    172.21.2.0/24         [10] area: 0.0.0.0
+                           directly attached to eth1
+N    172.21.3.0/24         [30] area: 0.0.0.0
+                           via 172.21.0.14, eth0
+                           via 172.21.2.11, eth1
+N    172.21.4.0/24         [20] area: 0.0.0.0
+                           via 172.21.2.11, eth1
+
+============ OSPF router routing table =============
+
+============ OSPF external routing table ===========
+```
+
+</td>
+<td>
+
+```
+EIGRP Topology Table for AS(1)/ID(172.21.2.10)
+
+Codes: P - Passive, A - Active, U - Update, Q - Query, R - Reply
+       r - reply Status, s - sia Status
+
+P  172.21.0.0/24, 1 successors, FD is 28160, serno: 0 
+       via Connected, eth0
+P  172.21.1.0/24, 1 successors, FD is 30720, serno: 0 
+       via 172.21.0.14 (30720/28160), eth0
+P  172.21.2.0/24, 1 successors, FD is 28160, serno: 0 
+       via Connected, eth1
+P  172.21.3.0/24, 2 successors, FD is 33280, serno: 0 
+       via 172.21.0.14 (33280/30720), eth0
+       via 172.21.2.11 (33280/30720), eth1
+P  172.21.4.0/24, 1 successors, FD is 30720, serno: 0 
+       via 172.21.2.11 (30720/28160), eth1
+```
+
+</td>
+</tr>
+
+<tr>
+<td>
+show ip ospf/eigrp neighbor
+</td>
+<td>
+
+```
+Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
+172.21.1.14       1 Full/Backup     12.433s           33.424s 172.21.0.14     eth0:172.21.0.10                     0     0     0
+172.21.4.11       1 Full/DR         17.378s           32.622s 172.21.2.11     eth1:172.21.2.10 
+```
+
+</td>
+<td>
+
+```
+EIGRP neighbors for AS(1)
+
+H   Address           Interface            Hold   Uptime   SRTT   RTO   Q     Seq  
+                                           (sec)           (ms)        Cnt    Num   
+0   172.21.0.14       eth0                 12     0        0      2    0      3
+0   172.21.2.11       eth1                 11     0        0      2    0      4
+```
+
+</td>
+</tr>
+
+<tr>
+<td>
+show ip ospf/eigrp interface
+</td>
+<td>
+
+```
+eth0 is up
+  ifindex 3115, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
+  Internet Address 172.21.0.10/24, Broadcast 172.21.0.255, Area 0.0.0.0
+  MTU mismatch detection: enabled
+  Router ID 172.21.2.10, Network Type BROADCAST, Cost: 10
+  Transmit Delay is 1 sec, State DR, Priority 1
+  Designated Router (ID) 172.21.2.10 Interface Address 172.21.0.10/24
+  Backup Designated Router (ID) 172.21.1.14, Interface Address 172.21.0.14
+  Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
+  Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
+    Hello due in 4.142s
+  Neighbor Count is 1, Adjacent neighbor count is 1
+  Graceful Restart hello delay: 10s
+  LSA retransmissions: 7
+eth1 is up
+  ifindex 3109, MTU 1500 bytes, BW 10000 Mbit <UP,LOWER_UP,BROADCAST,RUNNING,MULTICAST>
+  Internet Address 172.21.2.10/24, Broadcast 172.21.2.255, Area 0.0.0.0
+  MTU mismatch detection: enabled
+  Router ID 172.21.2.10, Network Type BROADCAST, Cost: 10
+  Transmit Delay is 1 sec, State Backup, Priority 1
+  Designated Router (ID) 172.21.4.11 Interface Address 172.21.2.11/24
+  Backup Designated Router (ID) 172.21.2.10, Interface Address 172.21.2.10
+  Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
+  Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
+    Hello due in 4.142s
+  Neighbor Count is 1, Adjacent neighbor count is 1
+  Graceful Restart hello delay: 10s
+  LSA retransmissions: 0
+```
+
+</td>
+<td>
+
+```
+EIGRP interfaces for AS(1)
+
+Interface        Bandwidth  Delay      Peers  Xmit Queue   Mean    Pacing Time    Multicast    Pending  Hello    Holdtime
+                                              Un/Reliable  SRTT    Un/Reliable    Flow Timer   Routes  
+eth0             100000     10         1      0 / 0         0       0              0            0       5        15       
+eth1             100000     10         1      0 / 0         0       0              0            0       5        15       
+```
+
+</td>
+</tr>
+</table>
+
+### Convergência
+
+OSPF | EIGRP
+:-:|:-:
+![Convergência OSPF](./analysis/ospf/convergence-time.png "Convergência OSPF") | ![Convergência EIGRP](./analysis/eigrp/convergence-time.png "Convergência EIGRP")
+
+### Latência e Delay
+
+OSPF n1 | EIGRP n1 | OSPF n3 | EIGRP n3
+:-:|:-:|:-:|:-:
+![Ping OSPF](./analysis/ospf/ping50-r0-n1-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping50-r0-n1-r5.png "Ping EIGRP") | ![Ping OSPF](./analysis/ospf/ping50-r0-n3-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping50-r0-n3-r5.png "Ping EIGRP")
+![Ping OSPF](./analysis/ospf/ping500-r0-n1-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping500-r0-n1-r5.png "Ping EIGRP") | ![Ping OSPF](./analysis/ospf/ping500-r0-n3-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping500-r0-n3-r5.png "Ping EIGRP")
+![Ping OSPF](./analysis/ospf/ping5000-r0-n1-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping5000-r0-n1-r5.png "Ping EIGRP") | ![Ping OSPF](./analysis/ospf/ping5000-r0-n3-r5.png "Ping OSPF") | ![Ping EIGRP](./analysis/eigrp/ping5000-r0-n3-r5.png "Ping EIGRP")
+
+### Pacotes de roteamento
+
+OSPF | EIGRP 
+:-:|:-:
+![Pacotes de roteamento OSPF em 60s](./analysis/ospf/tcpdump.png "Pacotes de roteamento OSPF em 60s") | ![Pacotes de roteamento EIGRP em 60s](./analysis/eigrp/tcpdump.png "Pacotes de roteamento EIGRP em 60s")
