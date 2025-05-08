@@ -53,9 +53,10 @@ Por exemplo, O IP da interface de rede do roteador r5 que conecta na rede n1 é 
 
 Para montar a topologia foi utilizado Docker. Com uso do docker compose é possível subir cada um dos roteadores, configurar as redes, ips, e conexões de interfaces exatamente como no diagrama abaixo. A simulação dos roteadores foi feita com [FRR](https://frrouting.org/), um fork moderno e bem reconhecido do Quagga.
 
-Temos dois arquivos compose no projeto, um para OSPF, outro para EIGRP:
-
 ### Docker Compose:
+
+Temos dois arquivos compose no projeto, um para OSPF, outro para EIGRP.
+
     services: <-- Aqui temos cada um dos containers/roteadores, abaixo há o r0 como exemplo
       r0: <-- Nome do roteador
       cap_add: <-- Adiciona as capacidades requeridas pelo FRR
@@ -85,7 +86,7 @@ Temos dois arquivos compose no projeto, um para OSPF, outro para EIGRP:
           .
           .
 
-### Dockerfile
+### Dockerfile:
 
 A Dockerfile é chamada pelo compose, abaixo temos a do r0 como exemplo.
 
@@ -108,7 +109,7 @@ Na primeira linha temos o FROM, que indica a imagem utilizada. A imagem utilizad
 
     RUN touch ./etc/frr/vtysh.conf <-- Cria arquivo de configuração da shell de acesso ao roteador para evitar flooding de logs de arquivo não existente
 
-### network-setup.sh
+### network-setup.sh:
 
 O setup do roteador é bem simples. 'vtysh' é a shell que acessa o terminal do roteador, tendo os mesmos conformes da Cisco. Cada roteador tem um script próprio de setup para cada protocolo, e todos os scripts do mesmo protocolo têm os mesmos passos, diferindo apenas nas redes configuradas.
 
@@ -136,7 +137,7 @@ OSPF r0
 - network 172.21.2.10/24 area 0
 - end
 
-### run.sh
+### run.sh:
 
 Esse é o script principal do projeto, existindo um para cada protocolo. Dentro dele temos:
 - Chamada do compose
@@ -145,3 +146,5 @@ Esse é o script principal do projeto, existindo um para cada protocolo. Dentro 
 - Coleta de várias informações interessantes, como a tabela de roteamento IP, tabela do protocolo, topologia, interfaces, vizinhos, etc.
 - Execução dos testes (aplicando as alterações necessárias para cada um) e coleta dos dados de desempenho
 - Finalização do processo, com prompt para terminar os containers ou deixar eles de pé
+
+Dentro dos scripts run há comentários explicando mais a fundo os passos realizados em cada protocolo.
