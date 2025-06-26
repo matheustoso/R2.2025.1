@@ -1,4 +1,10 @@
 STYLESHEET = """
+Screen {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+}
+
 TransmittersWidget {
     height: 100%;
     width: 100%;
